@@ -18,14 +18,22 @@ exports.createAccount = async(req,res)=>{
 exports.loginUser = async(req,res)=>{
     const data = req.query
     const user = await USER.findOne(data)
-
+     const studentData = await USER.find()
     if(user){
-        res.render('Dashboard.ejs')
+        res.render('Dashboard.ejs',{studentData})
     }
     else{
         res.send('Invalid email or password')
     }
 }
-exports.dashboard = async(req,res)=>{
+exports.dashboardData =async (req, res) => {
+  const data = req.query;
+  await USER.insertOne(data);
+  console.log(data);
 
-}
+  res.redirect("/dashboard");
+};
+exports.dashboard = async (req, res) => {
+  const studentData = await USER.find()
+  res.render("Dashboard.ejs", { studentData });
+};

@@ -1,11 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        h4 {
+            font-size: 25px;
+            font-weight: 600;
+            margin-top: 70px;
+            text-align: center;
+        }
+
+        .main-Box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 30px;
+        }
+
+        .main-Box .box form {
+            width: 300px;
+            height: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            border: 1px solid #333;
+            border-radius: 5px;
+            padding: 18px;
+        }
+
+        .box input {
+            height: 40px;
+            padding: 5px;
+        }
+
+        .box button {
+            height: 30px;
+            margin-top: 15px;
+            font-size: 17px;
+        }
+
+        .box p {
+            text-align: center;
+        }
+    </style>
 </head>
+
 <body>
-    <h2>Dashboard Page</h2>
+    <h4>Student Dashboard</h4>
+    <div class="main-Box">
+        <div class="box">
+            <form action="/dashboardData">
+                Name: <input type="text" placeholder="UserName" name="userName">
+                Age: <input type="number" placeholder="Age" name="age">
+                Class: <input type="text" placeholder="Class" name="studentClass">
+                Address: <input type="text" placeholder="Address" name="address">
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <table border="1" style="margin: 40px 0 0 550px;">
+        <td>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Class</th>
+        <th>Address</th>
+        <th colspan="2">Action</th>
+        </td>
+        <tbody>
+             <% studentData.forEach(function(item){ %>
+            <tr>
+                <td><%= item.userName %></td>
+                <td><%= item.age %></td>
+                <td><%= item.studentClass %></td>
+                <td><%= item.address %></td>
+            </tr>
+                    <td><button><a href="">Edit</a></button></td>
+                    <td><button><a href="">Delete</a></button></td>
+                </tr>
+                <% }) %>
+        </tbody>
+    </table>
 </body>
+
 </html>
