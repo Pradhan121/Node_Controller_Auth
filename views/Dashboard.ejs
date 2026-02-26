@@ -59,10 +59,11 @@
     <div class="main-Box">
         <div class="box">
             <form action="/dashboardData">
-                Name: <input type="text" placeholder="UserName" name="userName">
-                Age: <input type="number" placeholder="Age" name="age">
-                Class: <input type="text" placeholder="Class" name="studentClass">
-                Address: <input type="text" placeholder="Address" name="address">
+                <input type="hidden" name="id" value="<%=(result) ? result._id : '' %>">
+                Name: <input type="text" placeholder="UserName" name="userName" value="<%=(result) ? result.userName : '' %>">
+                Age: <input type="number" placeholder="Age" name="age" value="<%=(result) ? result.age : '' %>">
+                Class: <input type="text" placeholder="Class" name="studentClass" value="<%=(result) ? result.studentClass : '' %>">
+                Address: <input type="text" placeholder="Address" name="address" value="<%=(result) ? result.address : '' %>">
                 <button type="submit">Submit</button>
             </form>
         </div>
@@ -77,15 +78,15 @@
         <th colspan="2">Action</th>
         </td>
         <tbody>
-             <% studentData.forEach(function(item){ %>
+             <% studentData.map((item)=>{ %>
             <tr>
                 <td><%= item.userName %></td>
                 <td><%= item.age %></td>
                 <td><%= item.studentClass %></td>
                 <td><%= item.address %></td>
             </tr>
-                    <td><button><a href="">Edit</a></button></td>
-                    <td><button><a href="">Delete</a></button></td>
+                    <td><button><a href="/editData/<%= item._id %>">Edit</a></button></td>
+                    <td><button><a href="/deleteData/<%= item._id %>">Delete</a></button></td>
                 </tr>
                 <% }) %>
         </tbody>
