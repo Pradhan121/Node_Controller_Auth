@@ -50,7 +50,7 @@ exports.dashboard = async (req, res) => {
 exports.deleteData = async(req,res)=>{
    const deleteId = req.params.id
    await dashboardUser.findByIdAndDelete(deleteId)
-   res.redirect('/')
+   res.redirect('/dashboard')
 }
 exports.editData = async (req, res) => {
   const editId = req.params.id

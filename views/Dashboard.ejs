@@ -70,27 +70,34 @@
     </div>
 
     <table border="1" style="margin: 40px 0 0 550px;">
-        <td>
-        <th>Name</th>
-        <th>Age</th>
-        <th>Class</th>
-        <th>Address</th>
-        <th colspan="2">Action</th>
-        </td>
-        <tbody>
-             <% studentData.map((item)=>{ %>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Class</th>
+            <th>Address</th>
+            <th colspan="2">Action</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <% studentData.map((item)=>{ %>
             <tr>
                 <td><%= item.userName %></td>
                 <td><%= item.age %></td>
                 <td><%= item.studentClass %></td>
                 <td><%= item.address %></td>
+                <td>
+                    <a href="/editData/<%= item._id %>">Edit</a>
+                </td>
+                <td>
+                    <a href="/deleteData/<%= item._id %>">Delete</a>
+                </td>
             </tr>
-                    <td><button><a href="/editData/<%= item._id %>">Edit</a></button></td>
-                    <td><button><a href="/deleteData/<%= item._id %>">Delete</a></button></td>
-                </tr>
-                <% }) %>
-        </tbody>
-    </table>
+        <% }) %>
+    </tbody>
+</table>
+
 </body>
 
 </html>
